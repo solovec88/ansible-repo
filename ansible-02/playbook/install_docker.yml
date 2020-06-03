@@ -1,0 +1,19 @@
+---
+
+- name: Install Docker
+  hosts: all
+  become: yes
+
+  vars:
+       source_file: ./install_docker.sh
+       destin_file: /opt
+
+
+  tasks:
+   
+   - name: Copy install docker.sh
+     copy: src={{ source_file }} dest={{ destin_file }} mode=preserve
+     
+   - name: Start sh script Docker
+     script: /opt/install_docker.sh 
+     
