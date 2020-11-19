@@ -1,0 +1,19 @@
+---
+ - hosts: all
+   tasks:
+   - name: ping test
+     ping:
+   - name: update
+     become: true
+     apt: update_cache=yes force_apt_get=yes
+   - name: copy docker script
+     copy: 
+        src: ~/work/ansible/playbook/docker.sh
+        dest: /home/user
+        owner: user
+        group: user
+        mode: '0755'
+
+   - name: instal docker
+     shell: /home/user/docker.sh
+    
